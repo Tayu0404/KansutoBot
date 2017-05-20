@@ -1,7 +1,7 @@
 {
-  "name": "discord-team-calender-bot",
+  "name": "kansuto-bot",
   "version": "0.0.1",
-  "description": "Manages scheduling of the team at discord",
+  "description": "A discord bot for senkan-strike.",
   "scripts": {
     "start": "node bin/core.js"
   },
