@@ -1,0 +1,30 @@
+{
+  "name": "discord-team-calender-bot",
+  "version": "0.0.1",
+  "description": "Manages scheduling of the team at discord",
+  "scripts": {
+    "start": "node bin/core.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/S--Minecraft/DiscordTeamCalenderBot"
+  },
+  "main": "core.js",
+  "author": "S (CVF293)",
+  "license": "MIT",
+  "dependencies": {
+    "coffee-script": "^1.12.6",
+    "del": "^2.2.2",
+    "discord.js": "^11.1.0",
+    "discord.js-music": "^1.0.3",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.1.0",
+    "gulp-coffee": "^2.3.4",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "node-opus": "^0.2.5",
+    "sodium": "^2.0.1",
+    "uws": "^0.14.1"
+  }
+}
