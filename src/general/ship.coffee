@@ -61,10 +61,10 @@ module.exports = (client) ->
           s = ship.attack.subGun
           return """
             --副砲--
-            砲塔: #{m.turret}個 同時発射数: #{m.burst}個
-            単発ダメージ: #{m.damage} 装填時間: #{m.loadTime}s
-            射程: #{m.range}km 貫通率: #{m.penetrateRate}% 貫通ダメージ: #{m.penetrateDamage}%
-            火災発生率: #{m.fireRate}% 旋回速度: #{m.turnSpeed}\n
+            砲塔: #{s.turret}個 同時発射数: #{s.burst}個
+            単発ダメージ: #{s.damage} 装填時間: #{s.loadTime}s
+            射程: #{s.range}km 貫通率: #{s.penetrateRate}% 貫通ダメージ: #{s.penetrateDamage}%
+            火災発生率: #{s.fireRate}% 旋回速度: #{s.turnSpeed}\n
           """
       if ship.attack.torpedo?
         res += do ->
