@@ -85,9 +85,11 @@ module.exports = (client) ->
             return
         if ship.airDefence?
           airDefencePowerSum += ship.airDefence.power*ship.airDefence.range
-      avgTier /= len
-      avgPenetrateResistance /= len
-      avgAbnormalResistance /= len
+      avgTier = util.round(avgTier/len)
+      avgPenetrateResistance = util.round(avgPenetrateResistance/len)
+      avgAbnormalResistance = util.round(avgAbnormalResistance/len)
+      dpmSum = util.round(dpmSum)
+      instantDmgSum = util.round(instantDmgSum)
 
       res = "平均Tier #{avgTier}\n"
 
