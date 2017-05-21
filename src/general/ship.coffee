@@ -57,7 +57,7 @@ module.exports = (client) ->
             単発ダメージ: #{m.damage} 装填時間: #{m.loadTime}s
             射程: #{m.range}km 貫通率: #{m.penetrateRate}% 貫通ダメージ: #{m.penetrateDamage}%
             火災発生率: #{m.fireRate}% 旋回速度: #{m.turnSpeed}
-            合計ダメージ: #{m.damage*m.turret*m.burst} 合計調整ダメージ: #{fixedDmg} DPM: #{dpm}\n
+            合計ダメージ: #{m.damage*m.turret*m.burst} 合計調整ダメージ: #{util.round(fixedDmg)} DPM: #{util.round(dpm)}\n
           """
       if ship.attack.subGun?
         res += do ->
@@ -70,7 +70,7 @@ module.exports = (client) ->
             単発ダメージ: #{s.damage} 装填時間: #{s.loadTime}s
             射程: #{s.range}km 貫通率: #{s.penetrateRate}% 貫通ダメージ: #{s.penetrateDamage}%
             火災発生率: #{s.fireRate}% 旋回速度: #{s.turnSpeed}
-            合計ダメージ: #{s.damage*s.turret*s.burst} 合計調整ダメージ: #{fixedDmg} DPM: #{dpm}\n
+            合計ダメージ: #{s.damage*s.turret*s.burst} 合計調整ダメージ: #{util.round(fixedDmg)} DPM: #{util.round(dpm)}\n
           """
       if ship.attack.torpedo?
         res += do ->
@@ -84,7 +84,7 @@ module.exports = (client) ->
             射程: #{t.range}km 速度: #{t.speed}nt
             貫通率: #{t.penetrateRate}% 貫通ダメージ: #{t.penetrateDamage}%
             浸水発生率: #{t.inudationRate}% 旋回速度: #{t.turnSpeed}
-            合計ダメージ: #{t.damage*t.turret*t.burst} 合計調整ダメージ: #{fixedDmg} DPM: #{dpm}\n
+            合計ダメージ: #{t.damage*t.turret*t.burst} 合計調整ダメージ: #{util.round(fixedDmg)} DPM: #{util.round(dpm)}\n
           """
       if ship.attack.bomber?
         res += do ->
@@ -92,7 +92,7 @@ module.exports = (client) ->
           fixedDmg = (b.damage+b.damage*(b.penetrateRate/100)*((b.penetrateDamage-100)/100))
           return """
             --爆撃機--
-            HP: #{b.hp} 単発ダメージ: #{b.damage} 調整ダメージ: #{fixedDmg}
+            HP: #{b.hp} 単発ダメージ: #{b.damage} 調整ダメージ: #{util.round(fixedDmg)}
             装填時間: #{b.loadTime}s 火災発生率: #{b.fireRate}%
             貫通率: #{b.penetrateRate}% 貫通ダメージ: #{b.penetrateDamage}%\n
           """
@@ -102,7 +102,7 @@ module.exports = (client) ->
           fixedDmg = (t.damage+t.damage*(t.penetrateRate/100)*((t.penetrateDamage-100)/100))
           return """
             --爆撃機--
-            HP: #{t.hp} 単発ダメージ: #{t.damage} 調整ダメージ: #{fixedDmg}
+            HP: #{t.hp} 単発ダメージ: #{t.damage} 調整ダメージ: #{util.round(fixedDmg)}
             射程: #{t.range}km 魚雷速度: #{t.speed}kt
             装填時間: #{t.loadTime}s 浸水発生率: #{t.inudationRate}%
             貫通率: #{t.penetrateRate}% 貫通ダメージ: #{t.penetrateDamage}%\n
