@@ -27,6 +27,7 @@ module.exports = (client) ->
       avgPenetrateResistance = 0
       avgAbnormalResistance = 0
       dpmSum = 0
+      instantDmgSum = 0
       maxMainRange = 0
       maxTorpedoRange = 0
       bommerDmg = 0
@@ -57,14 +58,20 @@ module.exports = (client) ->
         do ->
           m = ship.attack.mainGun
           if m?
-            dpmSum += (m.damage+m.damage*(m.penetrateRate/100)*((m.penetrateDamage-100)/100))*m.turret*m.burst*(60/m.loadTime)
+            dmg = (m.damage+m.damage*(m.penetrateRate/100)*((m.penetrateDamage-100)/100))*m.turret*m.burst
+            instantDmgSum += dmg
+            dpmSum += dmg*(60/m.loadTime)
             maxMainRange = Math.max(maxMainRange, m.range)
           s = ship.attack.subGun
           if s?
-            dpmSum += (s.damage+s.damage*(s.penetrateRate/100)*((s.penetrateDamage-100)/100))*s.turret*s.burst*(60/s.loadTime)
+            dmg = (s.damage+s.damage*(s.penetrateRate/100)*((s.penetrateDamage-100)/100))*s.turret*s.burst
+            instantDmgSum += dmg
+            dpmSum += dmg*(60/s.loadTime)
           t = ship.attack.torpedo
           if t?
-            dpmSum += (t.damage+t.damage*(t.penetrateRate/100)*((t.penetrateDamage-100)/100))*t.turret*t.burst*(60/t.loadTime)
+            dmg = (t.damage+t.damage*(t.penetrateRate/100)*((t.penetrateDamage-100)/100))*t.turret*t.burst
+            instantDmgSum += dmg
+            dpmSum += dmg*(60/t.loadTime)
             maxTorpedoRange = Math.max(maxTorpedoRange, t.range)
           return
         if ship.type is "空母"
@@ -98,11 +105,11 @@ module.exports = (client) ->
       res += "\n"
 
       res += "合計HP: #{hpSum} 合計装甲: #{armorSum} 合計対水雷バルジ: #{torpedoBulgeSum}\n"
-      res += "合計貫通抵抗: #{avgPenetrateResistance} 合計異常状態抵抗: #{avgAbnormalResistance}\n"
+      res += "平均貫通抵抗: #{avgPenetrateResistance}% 平均異常状態抵抗: #{avgAbnormalResistance}%\n"
 
-      res += "合計DPM: #{dpmSum}\n"
-      res += "最大主砲射程: #{maxMainRange} 最大魚雷射程: #{maxTorpedoRange}\n"
-      res += "爆撃機合計ダメージ: #{bommerDmg} 雷撃機合計ダメージ: #{torpedoBommerDmg}\n"
+      res += "合計DPM: #{dpmSum} 合計瞬間火力: #{instantDmgSum}\n"
+      res += "最大主砲射程: #{maxMainRange}km 最大魚雷射程: #{maxTorpedoRange}km\n"
+      res += "爆撃機単発ダメージ: #{bommerDmg} 雷撃機単発ダメージ: #{torpedoBommerDmg}\n"
 
       res += "合計防空射程合計火力: #{airDefencePowerSum}\n"
 
