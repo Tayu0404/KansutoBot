@@ -77,9 +77,11 @@ module.exports = (client) ->
         if ship.type is "空母"
           do ->
             b = ship.attack.bomber
+            if b?
+              bommerDmg += (b.damage+b.damage*(b.penetrateRate/100)*((b.penetrateDamage-100)/100))
             t = ship.attack.torpedoBomber
-            bommerDmg = (b.damage+b.damage*(b.penetrateRate/100)*((b.penetrateDamage-100)/100))
-            torpedoBommerDmg = (t.damage+t.damage*(t.penetrateRate/100)*((t.penetrateDamage-100)/100))
+            if t?
+              torpedoBommerDmg += (t.damage+t.damage*(t.penetrateRate/100)*((t.penetrateDamage-100)/100))
             return
         if ship.airDefence?
           airDefencePowerSum += ship.airDefence.power*ship.airDefence.range
