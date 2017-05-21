@@ -74,7 +74,7 @@ module.exports = (client) ->
             魚雷管: #{t.turret}個 同時発射数: #{t.burst}個
             単発ダメージ: #{t.damage} 装填時間: #{t.loadTime}s
             射程: #{t.range}km 速度: #{t.speed}nt
-            貫通率: #{t.penetrateRate}% 貫通ダメージ: #{t.penatrateDamage}%
+            貫通率: #{t.penetrateRate}% 貫通ダメージ: #{t.penetrateDamage}%
             浸水発生率: #{t.inudationRate}% 旋回速度: #{t.turnSpeed}\n
           """
       if ship.attack.bomber?
