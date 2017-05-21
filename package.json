@@ -1,6 +1,6 @@
 {
   "name": "kansuto-bot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A discord bot for senkan-strike.",
   "scripts": {
     "start": "node bin/core.js"
