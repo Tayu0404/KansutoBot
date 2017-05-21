@@ -133,7 +133,7 @@ module.exports = new Map([
        range: 3.96
   }]
   ["mutsuki", {
-    name: "睦月" # changed
+    name: "睦月"
     ruby: "むつき"
     type: "駆逐艦"
     tier: 4
@@ -146,38 +146,38 @@ module.exports = new Map([
       width: 9.2
       enginePower: 38500
     defence:
-      hp: 12106
-      armor: 411
+      hp: 10300
+      armor: 330
       torpedoBulge: 420
-      penetrateResistance: 11.55
-      abnormalResistance: 10.04
+      penetrateResistance: 10
+      abnormalResistance: 10
     mobility:
-      maxSpeed: 37.72
-      timeToMaxSpeed: 6.87
-      steerSpeed: 11.7
-      steerTime: 4.68
+      maxSpeed: 36.12
+      timeToMaxSpeed: 7.2
+      steerSpeed: 10.87
+      steerTime: 4.35
     attack:
       mainGun:
         turret: 4
         burst: 1
-        damage: 387
+        damage: 330
         loadTime: 6
-        range: 6.77
-        penetrateRate: 2.15
+        range: 6.3
+        penetrateRate: 2
         penetrateDamage: 150
         fireRate: 2
-        turnSpeed: 17.55
+        turnSpeed: 17
       torpedo:
         turret: 2
         burst: 3
-        damage: 4351
+        damage: 3800
         loadTime: 35
-        range: 6
-        speed: 75.11
-        penetrateRate: 8.16
+        range: 7.5
+        speed: 76.41
+        penetrateRate: 10
         penetrateDamage: 125
-        inudationRate: 14
-        turnSpeed: 28.42
+        inudationRate: 17
+        turnSpeed: 28
      airDefence:
        power: 270
        range: 3.96

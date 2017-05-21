@@ -1,4 +1,4 @@
-#usa = require "./usa"
+usa = require "./usa"
 japan = require "./japan"
 #uk = require "./uk"
 #germany = require "./germany"
@@ -7,17 +7,16 @@ japan = require "./japan"
 #france = require "./france"
 
 module.exports =
-  list: ["japan"]
-  ###[
+  list: [
     "usa"
     "japan"
-    "uk"
-    "germany"
-    "ussr"
-    "china"
-    "france"
-  ]###
-  #usa: usa
+    #"uk"
+    #"germany"
+    #"ussr"
+    #"china"
+    #"france"
+  ]
+  usa: usa
   japan: japan
   #uk: uk
   #germany: germany
