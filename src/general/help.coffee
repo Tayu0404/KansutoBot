@@ -46,7 +46,7 @@ module.exports = (client) ->
               k!ships id [船舶ID(船舶名をローマ字にしたものが多いです)] [船舶ID] [船舶ID]...
             ```
           """
-        when "omikuji"
+        when "omikuji", "おみくじ"
           reply = """
             おみくじをひけます
             ```
