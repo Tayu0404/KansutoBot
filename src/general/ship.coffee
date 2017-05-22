@@ -113,7 +113,7 @@ module.exports = (client) ->
           a = ship.airDefence
           return """
             --防空--
-            火力: #{a.power} 射程: #{a.range}km 射程合計火力: #{a.power*a.range}\n
+            火力: #{a.power} 射程: #{a.range}km 総合火力: #{a.power*a.range}\n
           """
 
       res += "```"

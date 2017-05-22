@@ -115,7 +115,7 @@ module.exports = (client) ->
       res += "最大主砲射程: #{maxMainRange}km 最大魚雷射程: #{maxTorpedoRange}km\n"
       res += "爆撃機単発ダメージ: #{bommerDmg} 雷撃機単発ダメージ: #{torpedoBommerDmg}\n"
 
-      res += "合計防空射程合計火力: #{airDefencePowerSum}\n"
+      res += "合計防空総合火力: #{airDefencePowerSum}\n"
 
       res += "```"
 
