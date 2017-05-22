@@ -21,3 +21,17 @@ module.exports =
     return ""
   round: (n) ->
     return Math.round(n*100)/100
+  randomFromArray: (a) ->
+    weightSum = 0
+    for v in a
+      weightSum += v.weight
+    index = Math.floor(Math.random()*weightSum+1)
+    weightNow = 0
+    for v in a
+      weightNow += v.weight
+      if index <= weightNow
+        return v.value
+    return a[a.length-1].value
+  randomFromArrayNoWeight: (a) ->
+    index = Math.floor(Math.random()*a.length)
+    return a[index]

@@ -5,8 +5,8 @@ module.exports = (client) ->
   client.on("command", (mes, rmes) ->
     if rmes.command is "ships"
       switch rmes.args[0].toLowerCase()
-        when "id" then ships = (shipDb.getShipFromId(ship) for ship in rmes.args[1..])
-        when "name" then ships = (shipDb.getShipFromName(ship) for ship in rmes.args[1..])
+        when "id" then ships = (shipDb.getShipFromId(ship) for ship in rmes.args[1..] when ship isnt "")
+        when "name" then ships = (shipDb.getShipFromName(ship) for ship in rmes.args[1..] when ship isnt "")
         else
           mes.channel.send "不明なコマンドです"
           return
@@ -115,7 +115,7 @@ module.exports = (client) ->
       res += "最大主砲射程: #{maxMainRange}km 最大魚雷射程: #{maxTorpedoRange}km\n"
       res += "爆撃機単発ダメージ: #{bommerDmg} 雷撃機単発ダメージ: #{torpedoBommerDmg}\n"
 
-      res += "合計防空射程合計火力: #{airDefencePowerSum}\n"
+      res += "合計防空総合火力: #{airDefencePowerSum}\n"
 
       res += "```"
 
