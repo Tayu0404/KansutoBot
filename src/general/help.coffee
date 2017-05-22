@@ -15,6 +15,7 @@ module.exports = (client) ->
               k!ship 船舶の情報を表示します
               k!ships 複数の船舶の合計情報を表示します
               k!omikuji,k!おみくじ おみくじをひけます※
+              k!gojikuji,k!ごじくじ ごじくじをひけます※
             ```
           """
         when "version"
@@ -53,6 +54,10 @@ module.exports = (client) ->
             大吉、吉、中吉、小吉、末吉、凶、大凶が出ます
             (左から良い方順)
             ```
+          """
+        when "gojikuji", "ごじくじ"
+          reply = """
+            ごじくじをひけます
           """
         else
           reply = """

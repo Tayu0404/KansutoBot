@@ -32,3 +32,6 @@ module.exports =
       if index <= weightNow
         return v.value
     return a[a.length-1].value
+  randomFromArrayNoWeight: (a) ->
+    index = Math.floor(Math.random()*a.length)
+    return a[index]
