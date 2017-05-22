@@ -5,8 +5,8 @@ module.exports = (client) ->
   client.on("command", (mes, rmes) ->
     if rmes.command is "ships"
       switch rmes.args[0].toLowerCase()
-        when "id" then ships = (shipDb.getShipFromId(ship) for ship in rmes.args[1..])
-        when "name" then ships = (shipDb.getShipFromName(ship) for ship in rmes.args[1..])
+        when "id" then ships = (shipDb.getShipFromId(ship) for ship in rmes.args[1..] when ship isnt "")
+        when "name" then ships = (shipDb.getShipFromName(ship) for ship in rmes.args[1..] when ship isnt "")
         else
           mes.channel.send "不明なコマンドです"
           return
