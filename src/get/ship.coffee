@@ -52,7 +52,7 @@ module.exports = class Ship
         s = @data.attack.subGun
         s.totalDmg = s.damage*s.turret*s.burst
         s.fixedDmg = (s.damage+s.damage*(s.penetrateRate/100)*((s.penetrateDamage-100)/100))*s.turret*s.burst
-        s.dpm = s.fixedDmg * (60/m.loadTime)
+        s.dpm = s.fixedDmg * (60/s.loadTime)
         s.roundedFixedDmg = util.round(s.fixedDmg)
         s.roundedDpm = util.round(s.dpm)
         return
