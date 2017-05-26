@@ -8,7 +8,7 @@ module.exports = (client) ->
         mes.channel.send "コマンド構文に適合しません 構文は`k!help ship`を参照してください"
         return
 
-      ships = []
+      ships = new Map()
       len = 0
       avgTier = 0
       countType = {}
@@ -30,7 +30,13 @@ module.exports = (client) ->
       airDefencePowerSum = 0
       for shipval in rmes.args[1..] when ship isnt ""
         try
-          s = new Ship(rmes.args[0].toLowerCase(), shipval)
+          key = rmes.args[0].toLowerCase()
+          if ships.has([key, shipval])
+            s = ships.get([key, shipval])
+          else
+            s = new Ship(key, shipval)
+            s.addData()
+            ships.set([key, shipval], s)
         catch e
           switch e
             when "invalid command"
