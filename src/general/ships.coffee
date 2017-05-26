@@ -12,6 +12,7 @@ module.exports = (client) ->
       len = 0
       avgTier = 0
       countType = {}
+      countCountry = {}
       countName = {}
       displacementSum = 0
       countSkill = {}
@@ -45,6 +46,8 @@ module.exports = (client) ->
         avgTier += ship.tier
         countType[ship.type] ?= 0
         countType[ship.type]++
+        countCountry[ship.country] ?= 0
+        countCountry[ship.country]++
         countName[ship.name] ?= 0
         countName[ship.name]++
         displacementSum += ship.basic.displacement
@@ -93,6 +96,9 @@ module.exports = (client) ->
 
       res += "種別:"
       for type, val of countType
+        res += " #{type}#{val}"
+      res += "\n国:"
+      for type, val of countCountry
         res += " #{type}#{val}"
       res += "\n艦名:"
       for type, val of countName

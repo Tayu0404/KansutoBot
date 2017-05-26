@@ -10,9 +10,11 @@ module.exports = class Ship
   set: (way, val) ->
     switch way
       when "id"
-        @data = Ship.getShipFromId(val)
+        [country, @data] = Ship.getShipFromId(val)
+        @data.country = util.translateCountry(country)
       when "name"
-        @data = Ship.getShipFromName(val)
+        [country, @data] = Ship.getShipFromName(val)
+        @data.country = util.translateCountry(country)
       else
         throw "invalid command"
     return
@@ -20,16 +22,16 @@ module.exports = class Ship
     for country in shipdata.list
       list = shipdata[country]
       if list.has(id)
-        return list.get(id)
+        return [country, list.get(id)]
     throw "not found"
     return null
   @getShipFromName: (name) ->
     for country in shipdata.list
       for v from shipdata[country].values()
         if v.name is name
-          return v
+          return [country, v]
         if v.ruby is name
-          return v
+          return [country, v]
     throw "not found"
     return null
   addData: ->

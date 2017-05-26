@@ -24,7 +24,7 @@ module.exports = (client) ->
       res = "Tier#{ship.tierRoman} "
       if ship.premium
         res += "プレミアム"
-      res += "#{ship.type} #{ship.name}(#{ship.ruby})\n"
+      res += " #{ship.country} #{ship.type} #{ship.name}(#{ship.ruby})\n"
 
       res += do ->
         b = ship.basic
