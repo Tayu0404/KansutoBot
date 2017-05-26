@@ -38,6 +38,8 @@ module.exports = class Ship
     @data.tierRoman = util.toRomanNumber(@data.tier)
     if @data.skill.length > 0
       @data.translatedSkill = (util.translateSkill(s) for s in @data.skill)
+    else
+      @data.translatedSkill = []
     if @data.attack.mainGun?
       do =>
         m = @data.attack.mainGun
