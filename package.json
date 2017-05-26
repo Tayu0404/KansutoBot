@@ -24,6 +24,7 @@
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "node-opus": "^0.2.5",
+    "run-sequence": "^1.2.2",
     "sodium": "^2.0.1",
     "uws": "^0.14.1"
   }

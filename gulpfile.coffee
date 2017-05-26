@@ -5,10 +5,13 @@ notify = require "gulp-notify"
 plumber = require "gulp-plumber"
 changed = require "gulp-changed"
 coffee = require "gulp-coffee"
+runSequence = require "run-sequence"
 
 childProcess = null
-spawnCP = ->
+killCP = ->
   childProcess?.kill()
+  return
+spawnCP = ->
   childProcess = cp.spawn("node", ["./bin/core.js"], {stdio: "inherit"})
   return
 
@@ -23,11 +26,21 @@ gulp.task "watch", ["default"], ->
   return
 
 gulp.task "dev", ["default"], ->
+  gulp.watch "./src/**", (cb) ->
+    return runSequence(
+      "kill",
+      "coffee",
+      "run"
+    )
+  return
+
+gulp.task "kill", (cb) ->
+  killCP()
+  cb()
+  return
+gulp.task "run", (cb) ->
   spawnCP()
-  gulp.watch "./src/**/*.coffee", ["coffee"]
-  gulp.watch "./src/**", ->
-    spawnCP()
-    return
+  cb()
   return
 
 # compile
