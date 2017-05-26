@@ -1,21 +1,15 @@
-shipDb = require "../get/ship"
+Ship = require "../get/ship"
 util = require "../util"
 
 module.exports = (client) ->
   client.on("command", (mes, rmes) ->
     if rmes.command is "ships"
-      switch rmes.args[0].toLowerCase()
-        when "id" then ships = (shipDb.getShipFromId(ship) for ship in rmes.args[1..] when ship isnt "")
-        when "name" then ships = (shipDb.getShipFromName(ship) for ship in rmes.args[1..] when ship isnt "")
-        else
-          mes.channel.send "不明なコマンドです"
-          return
-
-      for ship in ships when !ship?
-        mes.channel.send "戦艦が見つかりませんでした"
+      if rmes.args.length < 2
+        mes.channel.send "コマンド構文に適合しません 構文は`k!help ship`を参照してください"
         return
 
-      len = ships.length
+      ships = []
+      len = 0
       avgTier = 0
       countType = {}
       countName = {}
@@ -33,7 +27,21 @@ module.exports = (client) ->
       bommerDmg = 0
       torpedoBommerDmg = 0
       airDefencePowerSum = 0
-      for ship in ships
+      for shipval in rmes.args[1..] when ship isnt ""
+        try
+          s = new Ship(rmes.args[0].toLowerCase(), shipval)
+        catch e
+          switch e
+            when "invalid command"
+              m = "コマンド構文に適合しません 構文は`k!help ship`を参照してください"
+            when "not found"
+              m = "戦艦が見つかりませんでした"
+            else
+              m = "不明なエラーが発生しました"
+          mes.channel.send m
+          return
+        ship = s.data
+        len++
         avgTier += ship.tier
         if countType[ship.type]?
           countType[ship.type] += 1
@@ -58,33 +66,30 @@ module.exports = (client) ->
         do ->
           m = ship.attack.mainGun
           if m?
-            dmg = (m.damage+m.damage*(m.penetrateRate/100)*((m.penetrateDamage-100)/100))*m.turret*m.burst
-            instantDmgSum += dmg
-            dpmSum += dmg*(60/m.loadTime)
+            instantDmgSum += m.fixedDmg
+            dpmSum += m.dpm
             maxMainRange = Math.max(maxMainRange, m.range)
           s = ship.attack.subGun
           if s?
-            dmg = (s.damage+s.damage*(s.penetrateRate/100)*((s.penetrateDamage-100)/100))*s.turret*s.burst
-            instantDmgSum += dmg
-            dpmSum += dmg*(60/s.loadTime)
+            instantDmgSum += s.fixedDmg
+            dpmSum += s.dpm
           t = ship.attack.torpedo
           if t?
-            dmg = (t.damage+t.damage*(t.penetrateRate/100)*((t.penetrateDamage-100)/100))*t.turret*t.burst
-            instantDmgSum += dmg
-            dpmSum += dmg*(60/t.loadTime)
+            instantDmgSum += t.fixedDmg
+            dpmSum += t.dpm
             maxTorpedoRange = Math.max(maxTorpedoRange, t.range)
           return
         if ship.type is "空母"
           do ->
             b = ship.attack.bomber
             if b?
-              bommerDmg += (b.damage+b.damage*(b.penetrateRate/100)*((b.penetrateDamage-100)/100))
+              bommerDmg += b.fixedDmg
             t = ship.attack.torpedoBomber
             if t?
-              torpedoBommerDmg += (t.damage+t.damage*(t.penetrateRate/100)*((t.penetrateDamage-100)/100))
+              torpedoBommerDmg += t.fixedDmg
             return
         if ship.airDefence?
-          airDefencePowerSum += ship.airDefence.power*ship.airDefence.range
+          airDefencePowerSum += ship.airDefence.totalPower
       avgTier = util.round(avgTier/len)
       avgPenetrateResistance = util.round(avgPenetrateResistance/len)
       avgAbnormalResistance = util.round(avgAbnormalResistance/len)
