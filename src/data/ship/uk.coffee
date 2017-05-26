@@ -336,4 +336,53 @@ module.exports = new Map([
        range: 4.44
   }]
   # ここから課金艦
+  ["wosupaito", {
+    name: "ウォースパイト"
+    ruby: "うぉーすぱいと"
+    type: "戦艦"
+    tier: 6
+    premium: true
+    skill: ["attackup"]
+    basic:
+      year: 1915
+      displacement: 32500
+      length: 196
+      width: 31.7
+      enginePower: 80000
+    defence:
+      hp: 33122
+      armor: 832
+      torpedoBulge: 963
+      penetrateResistance: 13.8
+      abnormalResistance: 12
+    mobility:
+      maxSpeed: 24.45
+      timeToMaxSpeed: 17.78
+      steerSpeed: 6.22
+      steerTime: 15.6
+    attack:
+      mainGun:
+        turret: 4
+        burst: 2
+        damage: 1350
+        loadTime: 16
+        range: 11.1
+        penetrateRate: 10.58
+        penetrateDamage: 250
+        fireRate: 8
+        turnSpeed: 10
+      subGun:
+        turret: 8
+        burst: 1
+        damage: 380
+        loadTime: 6
+        range: 6.3
+        penetrateRate: 3.45
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 12
+     airDefence:
+       power: 510
+       range: 4.2
+  }]
 ])
