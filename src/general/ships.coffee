@@ -43,20 +43,14 @@ module.exports = (client) ->
         ship = s.data
         len++
         avgTier += ship.tier
-        if countType[ship.type]?
-          countType[ship.type] += 1
-        else
-          countType[ship.type] = 1
-        if countName[ship.name]?
-          countName[ship.name] += 1
-        else
-          countName[ship.name] = 1
+        countType[ship.type] ?= 0
+        countType[ship.type]++
+        countName[ship.name] ?= 0
+        countName[ship.name]++
         displacementSum += ship.basic.displacement
         for skill in ship.translatedSkill
-          if countSkill[skill]?
-            countSkill[skill] += 1
-          else
-            countSkill[skill] = 1
+          countSkill[skill] ?= 0
+          countSkill[skill]++
         hpSum += ship.defence.hp
         armorSum += ship.defence.armor
         torpedoBulgeSum += ship.defence.torpedoBulge
