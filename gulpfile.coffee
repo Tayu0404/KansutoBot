@@ -26,6 +26,7 @@ gulp.task "watch", ["default"], ->
   return
 
 gulp.task "dev", ["default"], ->
+  spawnCP()
   gulp.watch "./src/**", (cb) ->
     return runSequence(
       "kill",
