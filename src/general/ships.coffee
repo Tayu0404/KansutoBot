@@ -21,6 +21,8 @@ module.exports = (client) ->
       torpedoBulgeSum = 0
       avgPenetrateResistance = 0
       avgAbnormalResistance = 0
+      minSpeed = null
+      maxSpeed = null
       dpmSum = 0
       instantDmgSum = 0
       maxMainRange = 0
@@ -65,6 +67,10 @@ module.exports = (client) ->
         torpedoBulgeSum += ship.defence.torpedoBulge
         avgPenetrateResistance += ship.defence.penetrateResistance
         avgAbnormalResistance += ship.defence.abnormalResistance
+        minSpeed ?= ship.mobility.maxSpeed
+        maxSpeed ?= ship.mobility.maxSpeed
+        minSpeed = Math.min(minSpeed, ship.mobility.maxSpeed)
+        maxSpeed = Math.max(maxSpeed, ship.mobility.maxSpeed)
         do ->
           m = ship.attack.mainGun
           if m?
@@ -95,6 +101,7 @@ module.exports = (client) ->
       avgTier = util.round(avgTier/len)
       avgPenetrateResistance = util.round(avgPenetrateResistance/len)
       avgAbnormalResistance = util.round(avgAbnormalResistance/len)
+      maxSpeedDiff = maxSpeed - minSpeed
       dpmSum = util.round(dpmSum)
       instantDmgSum = util.round(instantDmgSum)
 
@@ -119,7 +126,7 @@ module.exports = (client) ->
       res += "\n"
 
       res += "合計HP: #{hpSum} 合計装甲: #{armorSum} 合計対水雷バルジ: #{torpedoBulgeSum}\n"
-      res += "平均貫通抵抗: #{avgPenetrateResistance}% 平均異常状態抵抗: #{avgAbnormalResistance}%\n"
+      res += "平均貫通抵抗: #{avgPenetrateResistance}% 平均異常状態抵抗: #{avgAbnormalResistance} 最大速度差: #{maxSpeedDiff}nt\n"
 
       res += "合計DPM: #{dpmSum} 合計瞬間火力: #{instantDmgSum}\n"
       res += "最大主砲射程: #{maxMainRange}km 最大魚雷射程: #{maxTorpedoRange}km\n"
