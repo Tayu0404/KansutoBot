@@ -52,12 +52,11 @@ module.exports = (client) ->
         else
           countName[ship.name] = 1
         displacementSum += ship.basic.displacement
-        for skill in ship.skill
-          s = util.translateSkill(skill)
-          if countSkill[s]?
-            countSkill[s] += 1
+        for skill in ship.translatedSkill
+          if countSkill[skill]?
+            countSkill[skill] += 1
           else
-            countSkill[s] = 1
+            countSkill[skill] = 1
         hpSum += ship.defence.hp
         armorSum += ship.defence.armor
         torpedoBulgeSum += ship.defence.torpedoBulge
