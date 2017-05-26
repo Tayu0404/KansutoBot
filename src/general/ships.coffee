@@ -1,23 +1,18 @@
-shipDb = require "../get/ship"
+Ship = require "../get/ship"
 util = require "../util"
 
 module.exports = (client) ->
   client.on("command", (mes, rmes) ->
     if rmes.command is "ships"
-      switch rmes.args[0].toLowerCase()
-        when "id" then ships = (shipDb.getShipFromId(ship) for ship in rmes.args[1..] when ship isnt "")
-        when "name" then ships = (shipDb.getShipFromName(ship) for ship in rmes.args[1..] when ship isnt "")
-        else
-          mes.channel.send "不明なコマンドです"
-          return
-
-      for ship in ships when !ship?
-        mes.channel.send "戦艦が見つかりませんでした"
+      if 12+2 <= rmes.args.length < 2
+        mes.channel.send "コマンド構文に適合しません 構文は`k!help ships`を参照してください"
         return
 
-      len = ships.length
+      ships = new Map()
+      len = 0
       avgTier = 0
       countType = {}
+      countCountry = {}
       countName = {}
       displacementSum = 0
       countSkill = {}
@@ -26,6 +21,8 @@ module.exports = (client) ->
       torpedoBulgeSum = 0
       avgPenetrateResistance = 0
       avgAbnormalResistance = 0
+      minSpeed = null
+      maxSpeed = null
       dpmSum = 0
       instantDmgSum = 0
       maxMainRange = 0
@@ -33,61 +30,78 @@ module.exports = (client) ->
       bommerDmg = 0
       torpedoBommerDmg = 0
       airDefencePowerSum = 0
-      for ship in ships
-        avgTier += ship.tier
-        if countType[ship.type]?
-          countType[ship.type] += 1
-        else
-          countType[ship.type] = 1
-        if countName[ship.name]?
-          countName[ship.name] += 1
-        else
-          countName[ship.name] = 1
-        displacementSum += ship.basic.displacement
-        for skill in ship.skill
-          s = util.translateSkill(skill)
-          if countSkill[s]?
-            countSkill[s] += 1
+      for shipval in rmes.args[1..] when shipval isnt ""
+        try
+          key = rmes.args[0].toLowerCase()
+          if ships.has([key, shipval])
+            s = ships.get([key, shipval])
           else
-            countSkill[s] = 1
+            s = new Ship(key, shipval)
+            s.addData()
+            ships.set([key, shipval], s)
+        catch e
+          switch e
+            when "invalid command"
+              m = "コマンド構文に適合しません 構文は`k!help ships`を参照してください"
+            when "not found"
+              m = "戦艦が見つかりませんでした"
+            else
+              m = "不明なエラーが発生しました: #{e.message}\n```\n#{e.stack}\n```"
+          mes.channel.send m
+          return
+        ship = s.data
+        len++
+        avgTier += ship.tier
+        countType[ship.type] ?= 0
+        countType[ship.type]++
+        countCountry[ship.country] ?= 0
+        countCountry[ship.country]++
+        countName[ship.name] ?= 0
+        countName[ship.name]++
+        displacementSum += ship.basic.displacement
+        for skill in ship.translatedSkill
+          countSkill[skill] ?= 0
+          countSkill[skill]++
         hpSum += ship.defence.hp
         armorSum += ship.defence.armor
         torpedoBulgeSum += ship.defence.torpedoBulge
         avgPenetrateResistance += ship.defence.penetrateResistance
         avgAbnormalResistance += ship.defence.abnormalResistance
+        minSpeed ?= ship.mobility.maxSpeed
+        maxSpeed ?= ship.mobility.maxSpeed
+        minSpeed = Math.min(minSpeed, ship.mobility.maxSpeed)
+        maxSpeed = Math.max(maxSpeed, ship.mobility.maxSpeed)
         do ->
           m = ship.attack.mainGun
           if m?
-            dmg = (m.damage+m.damage*(m.penetrateRate/100)*((m.penetrateDamage-100)/100))*m.turret*m.burst
-            instantDmgSum += dmg
-            dpmSum += dmg*(60/m.loadTime)
+            instantDmgSum += m.fixedDmg
+            dpmSum += m.dpm
             maxMainRange = Math.max(maxMainRange, m.range)
           s = ship.attack.subGun
           if s?
-            dmg = (s.damage+s.damage*(s.penetrateRate/100)*((s.penetrateDamage-100)/100))*s.turret*s.burst
-            instantDmgSum += dmg
-            dpmSum += dmg*(60/s.loadTime)
+            instantDmgSum += s.fixedDmg
+            dpmSum += s.dpm
           t = ship.attack.torpedo
           if t?
-            dmg = (t.damage+t.damage*(t.penetrateRate/100)*((t.penetrateDamage-100)/100))*t.turret*t.burst
-            instantDmgSum += dmg
-            dpmSum += dmg*(60/t.loadTime)
+            instantDmgSum += t.fixedDmg
+            dpmSum += t.dpm
             maxTorpedoRange = Math.max(maxTorpedoRange, t.range)
           return
         if ship.type is "空母"
           do ->
             b = ship.attack.bomber
             if b?
-              bommerDmg += (b.damage+b.damage*(b.penetrateRate/100)*((b.penetrateDamage-100)/100))
+              bommerDmg += b.fixedDmg
             t = ship.attack.torpedoBomber
             if t?
-              torpedoBommerDmg += (t.damage+t.damage*(t.penetrateRate/100)*((t.penetrateDamage-100)/100))
+              torpedoBommerDmg += t.fixedDmg
             return
         if ship.airDefence?
-          airDefencePowerSum += ship.airDefence.power*ship.airDefence.range
+          airDefencePowerSum += ship.airDefence.totalPower
       avgTier = util.round(avgTier/len)
       avgPenetrateResistance = util.round(avgPenetrateResistance/len)
       avgAbnormalResistance = util.round(avgAbnormalResistance/len)
+      maxSpeedDiff = util.round(maxSpeed - minSpeed)
       dpmSum = util.round(dpmSum)
       instantDmgSum = util.round(instantDmgSum)
 
@@ -95,6 +109,9 @@ module.exports = (client) ->
 
       res += "種別:"
       for type, val of countType
+        res += " #{type}#{val}"
+      res += "\n国:"
+      for type, val of countCountry
         res += " #{type}#{val}"
       res += "\n艦名:"
       for type, val of countName
@@ -109,7 +126,7 @@ module.exports = (client) ->
       res += "\n"
 
       res += "合計HP: #{hpSum} 合計装甲: #{armorSum} 合計対水雷バルジ: #{torpedoBulgeSum}\n"
-      res += "平均貫通抵抗: #{avgPenetrateResistance}% 平均異常状態抵抗: #{avgAbnormalResistance}%\n"
+      res += "平均貫通抵抗: #{avgPenetrateResistance}% 平均異常状態抵抗: #{avgAbnormalResistance} 最大速度差: #{maxSpeedDiff}nt\n"
 
       res += "合計DPM: #{dpmSum} 合計瞬間火力: #{instantDmgSum}\n"
       res += "最大主砲射程: #{maxMainRange}km 最大魚雷射程: #{maxTorpedoRange}km\n"

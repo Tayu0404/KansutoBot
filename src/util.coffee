@@ -19,6 +19,16 @@ module.exports =
       when "airattack" then return "防空警戒"
       when "attackup" then return "急速装填"
     return ""
+  translateCountry: (a) ->
+    switch a
+      when "usa" then return "アメリカ"
+      when "japan" then return "日本"
+      when "uk" then return "イギリス"
+      when "germany" then return "ドイツ"
+      when "ussr" then return "ソ連"
+      when "china" then return "中国"
+      when "france" then return "フランス"
+    return ""
   round: (n) ->
     return Math.round(n*100)/100
   randomFromArray: (a) ->
