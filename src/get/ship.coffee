@@ -3,7 +3,9 @@ shipdata = require "../data/ship/all"
 module.exports =
   getShipFromId: (id) ->
     for country in shipdata.list
-      return shipdata[country].get(id)
+      list = shipdata[country]
+      if list.has(id)
+        return list.get(id)
     return null
   getShipFromName: (name) ->
     for country in shipdata.list
