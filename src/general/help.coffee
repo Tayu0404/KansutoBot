@@ -40,7 +40,7 @@ module.exports = (client) ->
           """
         when "ships"
           reply = """
-            複数の船舶の合計情報を表示します
+            複数の船舶の合計情報を表示します(最大12隻)
             ```
             コマンド形式
               k!ships name [船舶名] [船舶名] [船舶名]...

@@ -4,8 +4,8 @@ util = require "../util"
 module.exports = (client) ->
   client.on("command", (mes, rmes) ->
     if rmes.command is "ships"
-      if rmes.args.length < 2
-        mes.channel.send "コマンド構文に適合しません 構文は`k!help ship`を参照してください"
+      if 12+2 <= rmes.args.length < 2
+        mes.channel.send "コマンド構文に適合しません 構文は`k!help ships`を参照してください"
         return
 
       ships = new Map()
