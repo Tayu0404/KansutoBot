@@ -15,7 +15,7 @@ module.exports = (client) ->
           when "not found"
             m = "戦艦が見つかりませんでした"
           else
-            m = "不明なエラーが発生しました"
+            m = "不明なエラーが発生しました: #{e.message}\n```\n#{e.stack}\n```"
         mes.channel.send m
         return
       s.addData()
