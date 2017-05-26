@@ -30,7 +30,7 @@ module.exports = (client) ->
       bommerDmg = 0
       torpedoBommerDmg = 0
       airDefencePowerSum = 0
-      for shipval in rmes.args[1..] when ship isnt ""
+      for shipval in rmes.args[1..] when shipval isnt ""
         try
           key = rmes.args[0].toLowerCase()
           if ships.has([key, shipval])
