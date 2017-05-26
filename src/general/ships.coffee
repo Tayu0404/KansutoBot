@@ -42,7 +42,7 @@ module.exports = (client) ->
         catch e
           switch e
             when "invalid command"
-              m = "コマンド構文に適合しません 構文は`k!help ship`を参照してください"
+              m = "コマンド構文に適合しません 構文は`k!help ships`を参照してください"
             when "not found"
               m = "戦艦が見つかりませんでした"
             else
