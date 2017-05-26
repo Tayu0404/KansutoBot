@@ -101,7 +101,7 @@ module.exports = (client) ->
       avgTier = util.round(avgTier/len)
       avgPenetrateResistance = util.round(avgPenetrateResistance/len)
       avgAbnormalResistance = util.round(avgAbnormalResistance/len)
-      maxSpeedDiff = maxSpeed - minSpeed
+      maxSpeedDiff = util.round(maxSpeed - minSpeed)
       dpmSum = util.round(dpmSum)
       instantDmgSum = util.round(instantDmgSum)
 
