@@ -15,7 +15,8 @@ module.exports = (client) ->
               k!ship 船舶の情報を表示します
               k!ships 複数の船舶の合計情報を表示します
               k!omikuji,k!おみくじ おみくじをひけます※
-              k!gojikuji,k!ごじくじ ごじくじをひけます※
+              k!gojikuji,k!ごじくじ,k!誤字くじ ごじくじをひけます※
+              k!gorilla,k!ごりら,k!ゴリラ 3%で性器を露出するゴリラ※
             ```
           """
         when "version"
@@ -58,6 +59,11 @@ module.exports = (client) ->
         when "gojikuji", "ごじくじ"
           reply = """
             ごじくじをひけます
+          """
+        when "gorilla", "ごりら", "ゴリラ"
+          reply = """
+            3%でゴリラが性器を露出します
+            2%で英語しゃべります
           """
         else
           reply = """
