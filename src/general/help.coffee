@@ -56,7 +56,7 @@ module.exports = (client) ->
             (左から良い方順)
             ```
           """
-        when "gojikuji", "ごじくじ"
+        when "gojikuji", "ごじくじ", "誤字くじ"
           reply = """
             ごじくじをひけます
           """
