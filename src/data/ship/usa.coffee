@@ -332,6 +332,56 @@ module.exports = new Map([
        power: 480
        range: 4.2
   }]
+  ["fureccha", {
+    name: "フレッチャー"
+    ruby: "ふれっちゃー"
+    type: "駆逐艦"
+    tier: 8
+    premium: false
+    skill: ["engineboost"]
+    basic:
+      year: 1942
+      displacement: 2100
+      length: 114.8
+      width: 12
+      enginePower: 60000
+    defence:
+      hp: 17800
+      armor: 500
+      torpedoBulge: 800
+      penetrateResistance: 11.5
+      abnormalResistance: 10
+    mobility:
+      maxSpeed: 36.28
+      timeToMaxSpeed: 6.94
+      steerSpeed: 13.09
+      steerTime: 4.25
+    attack:
+      mainGun:
+        turret: 5
+        burst: 1
+        damage: 360
+        loadTime: 5
+        range: 7.8
+        penetrateRate: 2.15
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 24
+      torpedo:
+        turret: 2
+        burst: 5
+        damage: 4200
+        loadTime: 40
+        range: 7.2
+        speed: 75.11
+        penetrateRate: 8.64
+        penetrateDamage: 125
+        inudationRate: 15
+        turnSpeed: 24.95
+     airDefence:
+       power: 510
+       range: 4.56
+  }]
   ["chesta", {
     name: "チェスター"
     ruby: "ちぇすたー"
@@ -622,6 +672,55 @@ module.exports = new Map([
        power: 700
        range: 4.56
   }]
+  ["fago", {
+    name: "ファーゴ"
+    ruby: "ふぁーご"
+    type: "巡洋艦"
+    tier: 8
+    premium: false
+    skill: ["airattack", "accurateaim"]
+    basic:
+      year: 1945
+      displacement: 11744
+      length: 185.3
+      width: 19.2
+      enginePower: 100000
+    defence:
+      hp: 28809
+      armor: 787
+      torpedoBulge: 997
+      penetrateResistance: 13.8
+      abnormalResistance: 15
+    mobility:
+      maxSpeed: 31.99
+      timeToMaxSpeed: 11.51
+      steerSpeed: 8.19
+      steerTime: 9.64
+    attack:
+      mainGun:
+        turret: 4
+        burst: 3
+        damage: 480
+        loadTime: 7
+        range: 10.08
+        penetrateRate: 3.23
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 16
+      subGun:
+        turret: 7
+        burst: 2
+        damage: 300
+        loadTime: 5
+        range: 6.3
+        penetrateRate: 2.3
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 16
+     airDefence:
+       power: 740
+       range: 4.56
+  }]
   ["pensakora", {
     name: "ペンサコーラ"
     ruby: "ぺんさこーら"
@@ -768,6 +867,55 @@ module.exports = new Map([
      airDefence:
        power: 660
        range: 4.2
+  }]
+  ["boruchimoa", {
+    name: "ボルチモア"
+    ruby: "ぼるちもあ"
+    type: "巡洋艦"
+    tier: 8
+    premium: false
+    skill: ["airattack", "attackup"]
+    basic:
+      year: 1943
+      displacement: 14500
+      length: 205.3
+      width: 21.59
+      enginePower: 120000
+    defence:
+      hp: 29522
+      armor: 840
+      torpedoBulge: 945
+      penetrateResistance: 13.8
+      abnormalResistance: 15
+    mobility:
+      maxSpeed: 31.99
+      timeToMaxSpeed: 12.72
+      steerSpeed: 6.81
+      steerTime: 10.41
+    attack:
+      mainGun:
+        turret: 3
+        burst: 3
+        damage: 700
+        loadTime: 8
+        range: 10.2
+        penetrateRate: 4.3
+        penetrateDamage: 200
+        fireRate: 3
+        turnSpeed: 16
+      subGun:
+        turret: 6
+        burst: 2
+        damage: 300
+        loadTime: 5
+        range: 6
+        penetrateRate: 2.3
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 16
+     airDefence:
+       power: 720
+       range: 4.56
   }]
   ["sausukaroraina", {
     name: "サウスカロライナ"
@@ -1011,6 +1159,55 @@ module.exports = new Map([
        power: 570
        range: 4.32
   }]
+  ["norsucaroraina", {
+    name: "ノースカロライナ"
+    ruby: "のーすかろらいな"
+    type: "戦艦"
+    tier: 7
+    premium: false
+    skill: ["accurateaim", "airattack"]
+    basic:
+      year: 1941
+      displacement: 36600
+      length: 222
+      width: 33
+      enginePower: 121000
+    defence:
+      hp: 41882
+      armor: 1050
+      torpedoBulge: 1050
+      penetrateResistance: 13.8
+      abnormalResistance: 15
+    mobility:
+      maxSpeed: 26.4
+      timeToMaxSpeed: 20.21
+      steerSpeed: 5.34
+      steerTime: 18.29
+    attack:
+      mainGun:
+        turret: 3
+        burst: 3
+        damage: 1450
+        loadTime: 16
+        range: 12.12
+        penetrateRate: 10.58
+        penetrateDamage: 250
+        fireRate: 7
+        turnSpeed: 10
+      subGun:
+        turret: 10
+        burst: 2
+        damage: 300
+        loadTime: 5
+        range: 6
+        penetrateRate: 2.3
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 16
+     airDefence:
+       power: 720
+       range: 4.56
+  }]
   ["rangure", {
     name: "ラングレー"
     ruby: "らんぐれー"
@@ -1212,6 +1409,61 @@ module.exports = new Map([
      airDefence:
        power: 560
        range: 4.2
+  }]
+  ["rekisinton", {
+    name: "レキシントン"
+    ruby: "れきしんとん"
+    type: "空母"
+    tier: 8
+    premium: false
+    skill: ["airattack"]
+    basic:
+      year: 1927
+      displacement: 38746
+      length: 259.1
+      width: 32.3
+      enginePower: 180000
+    defence:
+      hp: 31700
+      armor: 750
+      torpedoBulge: 1000
+      penetrateResistance: 11.5
+      abnormalResistance: 14
+    mobility:
+      maxSpeed: 32.23
+      timeToMaxSpeed: 16.45
+      steerSpeed: 4.73
+      steerTime: 17.69
+    attack:
+      mainGun:
+        turret: 6
+        burst: 1.5
+        damage: 330
+        loadTime: 7
+        range: 7.5
+        penetrateRate: 2.15
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 12
+      bomber:
+        hp: 2631
+        damage: 2300
+        loadTime: 27
+        penetrateRate: 7
+        penetrateDamage: 150
+        fireRate: 12.36
+      torpedoBomber:
+        hp: 2450
+        damage: 3100
+        range: 3.6
+        speed: 61.13
+        loadTime: 42
+        penetrateRate: 5
+        penetrateDamage: 125
+        inudationRate: 10
+     airDefence:
+       power: 630
+       range: 4.32
   }]
   # ここから課金艦
   ["pota", {
