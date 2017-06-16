@@ -99,7 +99,7 @@ module.exports = (client) ->
         res += do ->
           t = ship.attack.torpedoBomber
           return """
-            --爆撃機--
+            --雷撃機--
             HP: #{t.hp} 単発ダメージ: #{t.damage} 調整ダメージ: #{t.roundedFixedDmg}
             射程: #{t.range}km 魚雷速度: #{t.speed}kt
             装填時間: #{t.loadTime}s 浸水発生率: #{t.inudationRate}%
