@@ -244,6 +244,55 @@ module.exports = new Map([
        power: 570
        range: 3.96
   }]
+  ["bisumaruku", {
+    name: "ビスマルク"
+    ruby: "びすまるく"
+    type: "戦艦"
+    tier: 8
+    premium: false
+    skill: ["accurateaim"]
+    basic:
+      year: 1940
+      displacement: 41700
+      length: 250.5
+      width: 36
+      enginePower: 150170
+    defence:
+      hp: 48951
+      armor: 1236
+      torpedoBulge: 1190
+      penetrateResistance: 19.72
+      abnormalResistance: 12.24
+    mobility:
+      maxSpeed: 28.34
+      timeToMaxSpeed: 18.21
+      steerSpeed: 5.63
+      steerTime: 18.60
+    attack:
+      mainGun:
+        turret: 4
+        burst: 2
+        damage: 1350
+        loadTime: 15
+        range: 12.00
+        penetrateRate: 10.58
+        penetrateDamage: 250
+        fireRate: 7
+        turnSpeed: 9.09
+      subGun:
+        turret: 6
+        burst: 2
+        damage: 390
+        loadTime: 5
+        range: 7.50
+        penetrateRate: 5.75
+        penetrateDamage: 150
+        fireRate: 5
+        turnSpeed: 12.12
+     airDefence:
+       power: 660
+       range: 4.20
+  }]
   # ここから課金艦
   ["kenihisuberuku", {
     name: "ケーニヒスベルク"
