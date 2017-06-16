@@ -244,6 +244,55 @@ module.exports = new Map([
        power: 570
        range: 3.96
   }]
+  ["bisumaruku", {
+    name: "ビスマルク"
+    ruby: "びすまるく"
+    type: "戦艦"
+    tier: 8
+    premium: false
+    skill: ["accurateaim"]
+    basic:
+      year: 1940
+      displacement: 41700
+      length: 250.5
+      width: 36
+      enginePower: 150170
+    defence:
+      hp: 48951
+      armor: 1236
+      torpedoBulge: 1190
+      penetrateResistance: 19.72
+      abnormalResistance: 12.24
+    mobility:
+      maxSpeed: 28.34
+      timeToMaxSpeed: 18.21
+      steerSpeed: 5.63
+      steerTime: 18.60
+    attack:
+      mainGun:
+        turret: 4
+        burst: 2
+        damage: 1350
+        loadTime: 15
+        range: 12.00
+        penetrateRate: 10.58
+        penetrateDamage: 250
+        fireRate: 7
+        turnSpeed: 9.09
+      subGun:
+        turret: 6
+        burst: 2
+        damage: 390
+        loadTime: 5
+        range: 7.50
+        penetrateRate: 5.75
+        penetrateDamage: 150
+        fireRate: 5
+        turnSpeed: 12.12
+     airDefence:
+       power: 660
+       range: 4.20
+  }]
   # ここから課金艦
   ["kenihisuberuku", {
     name: "ケーニヒスベルク"
@@ -343,6 +392,56 @@ module.exports = new Map([
         turnSpeed: 24
      airDefence:
        power: 510
+       range: 3.96
+  }]
+   ["purintsuoigen", {
+    name: "プリンツ・オイゲン"
+    ruby: "ぷりんつ・おいげん"
+    type: "巡洋艦"
+    tier: 7
+    premium: true
+    skill: ["accurateaim", "attackup"]
+    basic:
+      year: 1940
+      displacement: 14247
+      length: 212.5
+      width: 21.3
+      enginePower: 133000
+    defence:
+      hp: 26514
+      armor: 832
+      torpedoBulge: 884
+      penetrateResistance: 13.92
+      abnormalResistance: 12.24
+    mobility:
+      maxSpeed: 31.99
+      timeToMaxSpeed: 12.31
+      steerSpeed: 7.73
+      steerTime: 9.80
+    attack:
+      mainGun:
+        turret: 2
+        burst: 4
+        damage: 700
+        loadTime: 8
+        range: 10.8
+        penetrateRate: 4.34
+        penetrateDamage: 200
+        fireRate: 3.03
+        turnSpeed: 24.24
+      torpedo:
+        turret: 3
+        burst: 4
+        damage: 3200
+        loadTime: 40
+        range: 6.6
+        speed: 73.63
+        penetrateRate: 8.32
+        penetrateDamage: 125
+        inudationRate: 12
+        turnSpeed: 24
+     airDefence:
+       power: 570
        range: 3.96
   }]
 ])
