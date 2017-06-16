@@ -332,6 +332,56 @@ module.exports = new Map([
        power: 450
        range: 4.2
   }]
+  ["kagero", {
+    name: "陽炎"
+    ruby: "かげろう"
+    type: "駆逐艦"
+    tier: 8
+    premium: false
+    skill: ["engineboost"]
+    basic:
+      year: 1939
+      displacement: 2000
+      length: 118.5
+      width: 10.82
+      enginePower: 52000
+    defence:
+      hp: 16000
+      armor: 450
+      torpedoBulge: 700
+      penetrateResistance: 11.5
+      abnormalResistance: 10.0
+    mobility:
+      maxSpeed: 34.86
+      timeToMaxSpeed: 7.97
+      steerSpeed: 11.95
+      steerTime: 5.07
+    attack:
+      mainGun:
+        turret: 3
+        burst: 2
+        damage: 360
+        loadTime: 6
+        range: 7.2
+        penetrateRate: 2.15
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 19
+      torpedo:
+        turret: 2
+        burst: 4
+        damage: 4800
+        loadTime: 35
+        range: 9.3
+        speed: 86.89
+        penetrateRate: 12.96
+        penetrateDamage: 125
+        inudationRate: 20
+        turnSpeed: 25.8
+     airDefence:
+       power: 450
+       range: 4.32
+  }]
   ["tenryu", {
     name: "天龍"
     ruby: "てんりゅう"
@@ -632,6 +682,56 @@ module.exports = new Map([
        power: 660
        range: 4.2
   }]
+  ["takao", {
+    name: "高雄"
+    ruby: "たかお"
+    type: "巡洋艦"
+    tier: 8
+    premium: false
+    skill: ["accurateaim"]
+    basic:
+      year: 1932
+      displacement: 13400
+      length: 203.76
+      width: 20.72
+      enginePower: 133000
+    defence:
+      hp: 27995
+      armor: 735
+      torpedoBulge: 892
+      penetrateResistance: 12.65
+      abnormalResistance: 11.0
+    mobility:
+      maxSpeed: 34.94
+      timeToMaxSpeed: 13.74
+      steerSpeed: 6.58
+      steerTime: 9.49
+    attack:
+      mainGun:
+        turret: 5
+        burst: 2
+        damage: 700
+        loadTime: 10
+        range: 9.96
+        penetrateRate: 4.3
+        penetrateDamage: 200
+        fireRate: 3
+        turnSpeed: 16
+      torpedo:
+        turret: 4
+        burst: 4
+        damage: 4200
+        loadTime: 50
+        range: 7.5
+        speed: 81
+        penetrateRate: 10.8
+        penetrateDamage: 125
+        inudationRate: 17
+        turnSpeed: 24
+     airDefence:
+       power: 660
+       range: 4.2
+  }]
   ["kawachi", {
     name: "河内"
     ruby: "かわち"
@@ -877,6 +977,55 @@ module.exports = new Map([
        power: 600
        range: 4.2
   }]
+  ["nagato", {
+    name: "長門"
+    ruby: "ながと"
+    type: "戦艦"
+    tier: 8
+    premium: false
+    skill: ["accurateaim"]
+    basic:
+      year: 1920
+      displacement: 32720
+      length: 215.8
+      width: 28.96
+      enginePower: 80000
+    defence:
+      hp: 43110
+      armor: 945
+      torpedoBulge: 1260
+      penetrateResistance: 13.8
+      abnormalResistance: 12.0
+    mobility:
+      maxSpeed: 24.87
+      timeToMaxSpeed: 18.72
+      steerSpeed: 5.76
+      steerTime: 19.82
+    attack:
+      mainGun:
+        turret: 4
+        burst: 2
+        damage: 1600
+        loadTime: 15
+        range: 12
+        penetrateRate: 10.58
+        penetrateDamage: 250
+        fireRate: 7
+        turnSpeed: 9
+      subGun:
+        turret: 12
+        burst: 1
+        damage: 350
+        loadTime: 6
+        range: 7.2
+        penetrateRate: 3.45
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 12
+     airDefence:
+       power: 600
+       range: 4.32
+  }]
   ["hosho", {
     name: "鳳翔"
     ruby: "ほうしょう"
@@ -1097,6 +1246,61 @@ module.exports = new Map([
        power: 600
        range: 4.2
   }]
+  ["akagi", {
+    name: "赤城"
+    ruby: "あかぎ"
+    type: "空母"
+    tier: 8
+    premium: false
+    skill: []
+    basic:
+      year: 1927
+      displacement: 37100
+      length: 260.67
+      width: 31.32
+      enginePower: 133000
+    defence:
+      hp: 27600
+      armor: 650
+      torpedoBulge: 900
+      penetrateResistance: 11.5
+      abnormalResistance: 10
+    mobility:
+      maxSpeed: 30.29
+      timeToMaxSpeed: 15.35
+      steerSpeed: 4.95
+      steerTime: 17.11
+    attack:
+      mainGun:
+        turret: 6
+        burst: 1
+        damage: 700
+        loadTime: 10
+        range: 8.4
+        penetrateRate: 4.3
+        penetrateDamage: 200
+        fireRate: 3
+        turnSpeed: 15
+      bomber:
+        hp: 2429
+        damage: 1800
+        loadTime: 26
+        penetrateRate: 4
+        penetrateDamage: 150
+        fireRate: 8.24
+      torpedoBomber:
+        hp: 2400
+        damage: 3600
+        range: 3.96
+        speed: 63.91
+        loadTime: 43
+        penetrateRate: 5
+        penetrateDamage: 125
+        inudationRate: 16
+     airDefence:
+       power: 660
+       range: 4.32
+  }]
   # ここから課金艦
   ["yubari", {
     name: "夕張"
@@ -1252,5 +1456,55 @@ module.exports = new Map([
      airDefence:
        power: 510
        range: 4.2
+  }]
+  ["ayanami", {
+    name: "綾波"
+    ruby: "あやなみ"
+    type: "駆逐艦"
+    tier: 7
+    premium: true
+    skill: ["engineboost", "torpedo"]
+    basic:
+      year: 1930
+      displacement: 1680
+      length: 118
+      width: 10.36
+      enginePower: 50000
+    defence:
+      hp: 14400
+      armor: 400
+      torpedoBulge: 600
+      penetrateResistance: 11.5
+      abnormalResistance: 10
+    mobility:
+      maxSpeed: 36.84
+      timeToMaxSpeed: 7.75
+      steerSpeed: 11.7
+      steerTime: 5.23
+    attack:
+      mainGun:
+        turret: 3
+        burst: 2
+        damage: 360
+        loadTime: 6
+        range: 7.2
+        penetrateRate: 2.15
+        penetrateDamage: 150
+        fireRate: 2
+        turnSpeed: 19
+      torpedo:
+        turret: 3
+        burst: 3
+        damage: 4200
+        loadTime: 35
+        range: 8.4
+        speed: 81
+        penetrateRate: 10.8
+        penetrateDamage: 125
+        inudationRate: 20
+        turnSpeed: 25.8
+     airDefence:
+       power: 480
+       range: 4.32
   }]
 ])
