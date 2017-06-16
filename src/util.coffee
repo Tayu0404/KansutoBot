@@ -18,6 +18,7 @@ module.exports =
       when "accurateaim" then return "精密照準"
       when "airattack" then return "防空警戒"
       when "attackup" then return "急速装填"
+      when "torpedo" then return "魚雷急速装填"
     return ""
   translateCountry: (a) ->
     switch a
