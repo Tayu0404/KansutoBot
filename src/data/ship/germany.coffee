@@ -420,8 +420,8 @@ module.exports = new Map([
       steerTime: 9.80
     attack:
       mainGun:
-        turret: 2
-        burst: 4
+        turret: 4
+        burst: 2
         damage: 700
         loadTime: 8
         range: 10.8
@@ -430,8 +430,8 @@ module.exports = new Map([
         fireRate: 3.03
         turnSpeed: 24.24
       torpedo:
-        turret: 3
-        burst: 4
+        turret: 4
+        burst: 3
         damage: 3200
         loadTime: 40
         range: 6.6
