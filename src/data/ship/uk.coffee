@@ -335,6 +335,56 @@ module.exports = new Map([
        power: 660
        range: 4.44
   }]
+   ["edinbara", {
+    name: "エディンバラ"
+    ruby: "えでぃんばら"
+    type: "巡洋艦"
+    tier: 8
+    premium: false
+    skill: ["airattack", "attackup"]
+    basic:
+      year: 1939
+      displacement: 10635
+      length: 187
+      width: 19.2
+      enginePower: 82500
+    defence:
+      hp: 28437
+      armor: 728
+      torpedoBulge: 988
+      penetrateResistance: 13.92
+      abnormalResistance: 12.24
+    mobility:
+      maxSpeed: 31.99
+      timeToMaxSpeed: 10.71
+      steerSpeed: 8.87
+      steerTime: 7.04
+    attack:
+      mainGun:
+        turret: 4
+        burst: 3
+        damage: 480
+        loadTime: 7
+        range: 9.96
+        penetrateRate: 3.26
+        penetrateDamage: 150
+        fireRate: 2.02
+        turnSpeed: 26.26
+      torpedo:
+        turret: 2
+        burst: 3
+        damage: 3700
+        loadTime: 35
+        range: 7.5
+        speed: 81
+        penetrateRate: 9.36
+        penetrateDamage: 125
+        inudationRate: 14
+        turnSpeed: 30
+     airDefence:
+       power: 760
+       range: 4.56
+  }]
   # ここから課金艦
   ["wosupaito", {
     name: "ウォースパイト"
